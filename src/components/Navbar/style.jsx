@@ -5,6 +5,7 @@ export const Nav = styled.nav`
   width: 100%;
   height: 80px;
   position: fixed;
+  z-index: -1;
   background: transparent;
   margin-bottom: 2rem;
 `;
@@ -16,26 +17,28 @@ export const NavbarContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin: 0 auto;
   padding: 0 50px;
 
   @media (max-width: 768px) {
     padding: 0 30px;
     flex-direction: column;
-    gap: 2rem;
   }
 `;
 
 export const NavbarLogo = styled(Link)`
   display: flex;
-  justify-content: center;
   align-items: center;
   color: var(--white);
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-align: center;
+  margin-left: 2rem;
+
+  h1 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-align: center;
+  }
 `;
 
 export const NavbarIcon = styled.img`
@@ -44,4 +47,6 @@ export const NavbarIcon = styled.img`
   margin-right: 1rem;
 `;
 
-export const NavbarSearch = styled.div``;
+export const NavbarSearch = styled.div`
+  margin-top: 2rem;
+`;

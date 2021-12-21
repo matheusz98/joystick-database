@@ -6,6 +6,9 @@ import {
   NavbarLogo,
   NavbarSearch,
   NavbarIcon,
+  SidebarMenuContainer,
+  SidebarButton,
+  SidebarIcon,
 } from "./style";
 
 const Navbar = () => {
@@ -14,7 +17,7 @@ const Navbar = () => {
       <NavbarContainer>
         <NavbarLogo to="/">
           <NavbarIcon src={LogoIMG} alt="Joystick Database" />
-          Joystick Database
+          <h1>Joystick Database</h1>
         </NavbarLogo>
         <NavbarSearch>
           <SearchBar />

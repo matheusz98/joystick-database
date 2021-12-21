@@ -26,5 +26,6 @@ export default createGlobalStyle`
         --white: #ffffff;
         --gray: #3c3c3c;
         --lightGray: #8a8a8a;
+        --purple: #9038b9;
     }
 `;
