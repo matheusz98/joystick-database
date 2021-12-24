@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 export const Nav = styled.nav`
   width: 100%;
   height: 80px;
-  position: fixed;
-  z-index: -1;
+  position: absolute;
+  z-index: 1;
   background: transparent;
-  margin-bottom: 2rem;
 `;
 
 export const NavbarContainer = styled.div`
@@ -38,6 +37,10 @@ export const NavbarLogo = styled(Link)`
     font-weight: 600;
     letter-spacing: 2px;
     text-align: center;
+
+    @media (max-width: 480px) {
+      padding-right: 4rem;
+    }
   }
 `;
 

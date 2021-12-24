@@ -17,12 +17,31 @@ export default createGlobalStyle`
         color: var(--white);
     }
 
+    ::-webkit-scrollbar {
+        width: 20px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: #c5c9ca;
+        border-radius: 20px;
+        border: 6px solid transparent;
+        background-clip: content-box;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+        background-color: #949fa1;
+    }
+
     img {
         max-width: 100%;
     }
 
     :root {
-        --dark: #151515;
+        --dark: #121212;
         --white: #ffffff;
         --gray: #3c3c3c;
         --lightGray: #8a8a8a;

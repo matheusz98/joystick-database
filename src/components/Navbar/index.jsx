@@ -6,9 +6,6 @@ import {
   NavbarLogo,
   NavbarSearch,
   NavbarIcon,
-  SidebarMenuContainer,
-  SidebarButton,
-  SidebarIcon,
 } from "./style";
 
 const Navbar = () => {

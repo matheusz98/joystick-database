@@ -29,9 +29,12 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
+// List of games
+export const gamesHome = () => `${BASE_URL}games?key=${API_KEY}&page_size=21`;
+
 // Popular games
 const popular_games = `games?key=${API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=20`;
-export const popular_gamesUrl = () => `${BASE_URL}${popular_games}`;
+export const popularGamesUrl = () => `${BASE_URL}${popular_games}`;
 
 // Upcoming games
 const upcoming_games = `games?key=${API_KEY}&dates=${currentDate},${nextYear}&ordering=-added&page_size=20`;
@@ -39,7 +42,7 @@ export const upcomingGamesUrl = () => `${BASE_URL}${upcoming_games}`;
 
 // New games
 const new_games = `games?key=${API_KEY}=${lastYear},${currentDate}&ordering=-released&page_size=20`;
-export const new_gamesURL = () => `${BASE_URL}${new_games}`;
+export const newGamesUrl = () => `${BASE_URL}${new_games}`;
 
 // Game details
 export const gameDetailsUrl = (id) => `${BASE_URL}games/${id}?key=${API_KEY}`;
@@ -50,7 +53,7 @@ export const gameScreenshots = (id) =>
 
 // Search games
 export const searchGames = (query) =>
-  `${BASE_URL}games/key=${API_KEY}&search=${query}$page_size=20`;
+  `${BASE_URL}games/key=${API_KEY}&search=${query}&page_size=20`;
 
 // Game genres
 export const gameGenres = () => `${BASE_URL}genres?key=${API_KEY}`;

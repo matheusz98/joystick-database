@@ -11,6 +11,7 @@ export const SidebarContainer = styled.div`
   background: var(--white);
   color: var(--dark);
   padding: 4rem 1rem;
+  z-index: 2;
   box-shadow: 1px 1px 30px var(--dark);
   transition: 0.3s ease-in-out;
 

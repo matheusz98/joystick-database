@@ -11,6 +11,6 @@ export const SidebarIcon = styled(CgMenuGridO)`
   background: var(--dark);
   border-radius: 10px;
   transform: translate(50%, 100%);
-  position: absolute;
-  z-index: 1;
+  position: fixed;
+  z-index: 3;
 `;

@@ -1,9 +1,9 @@
 import { MenuContainer, MenuItem, JoystickIcon } from "./style";
 
-const Menu = () => {
+const Menu = ({ selectedItem }) => {
   return (
     <MenuContainer>
-      <MenuItem to="/">
+      <MenuItem to="/games-home">
         Home
         <JoystickIcon />
       </MenuItem>
