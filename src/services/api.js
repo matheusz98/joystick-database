@@ -30,7 +30,7 @@ const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
 // List of games
-export const gamesHome = () => `${BASE_URL}games?key=${API_KEY}&page_size=21`;
+export const gamesHome = () => `${BASE_URL}games?key=${API_KEY}&page_size=21&`;
 
 // Popular games
 const popular_games = `games?key=${API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=20`;
