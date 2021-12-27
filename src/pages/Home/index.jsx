@@ -22,12 +22,14 @@ import {
   ScrollToTop,
   ScrollToTopButton,
 } from "./style";
+import Loading from "../../components/Loading";
 
 const Home = ({ selectedItem }) => {
   const [games, setGames] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [title, setTitle] = useState("");
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -100,12 +102,15 @@ const Home = ({ selectedItem }) => {
 
     axios.get(item).then((res) => {
       setGames(res.data.results);
+      setLoading(false);
     });
 
     window.addEventListener("scroll", scrollToTop);
   }, [selectedItem, currentPage]);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <HomeSection>
       <Title>{title}</Title>
       <GameCards games={games} />
