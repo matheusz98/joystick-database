@@ -34,6 +34,30 @@ export const DetailsSection = styled.div`
   }
 `;
 
+export const GoBackButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 2rem;
+  cursor: pointer;
+  border: 2px solid var(--white);
+  background: transparent;
+  color: var(--white);
+  margin-top: 3rem;
+  transition: 0.3s ease-in-out;
+  border-radius: 50px;
+
+  &:hover {
+    border: 2px solid var(--purple);
+    color: var(--purple);
+  }
+
+  svg {
+    font-size: 1.25rem;
+    margin-right: 0.3rem;
+  }
+`;
+
 export const DetailsContent = styled.div`
   max-width: 1100px;
   margin: 0 auto;

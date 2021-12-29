@@ -5,9 +5,11 @@ import axios from "axios";
 import { gameDetailsUrl, gameScreenshots } from "../../services/api";
 import Loading from "../Loading";
 import { GiGamepadCross } from "react-icons/gi";
+import { BiArrowBack } from "react-icons/bi";
 import {
   DetailsSection,
   DetailsContent,
+  GoBackButton,
   Title,
   Developers,
   DevelopersItems,
@@ -41,6 +43,10 @@ const Details = () => {
   const [screenshots, setScreenshots] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
+
+  const goBackHandler = () => {
+    history.goBack();
+  };
 
   const criticScore = (score) => {
     if (score >= 90) {
@@ -115,6 +121,10 @@ const Details = () => {
                   </PlatformsItems>
                 ))}
               </Platforms>
+              <GoBackButton onClick={goBackHandler}>
+                <BiArrowBack />
+                Go Back
+              </GoBackButton>
             </DetailsContent>
             <DetailsContainer>
               <DetailsInfoTitle>About</DetailsInfoTitle>
