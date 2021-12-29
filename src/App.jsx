@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import SimpleReactLightbox from "simple-react-lightbox";
 import Navbar from "./components/Navbar";
 import GlobalStyles from "./GlobalStyles";
 import Sidebar from "./components/Sidebar";
@@ -21,7 +22,9 @@ const App = () => {
           <Navbar />
           <Switch>
             <Route path="/" component={Home} exact />
-            <Route path="/games/:id" component={Details} />
+            <SimpleReactLightbox>
+              <Route path="/games/:id" component={Details} />
+            </SimpleReactLightbox>
           </Switch>
         </SidebarWindow>
       </Container>

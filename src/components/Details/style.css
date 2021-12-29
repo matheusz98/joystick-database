@@ -1,0 +1,17 @@
+.score.platinum {
+  color: #81d9dd;
+  border: 3px solid #81d9dd;
+}
+.score.green {
+  color: #1fd647;
+  border: 3px solid #1fd647;
+}
+
+.score.yellow {
+  color: #f7e43b;
+  border: 3px solid #f7e43b;
+}
+.score.red {
+  color: #fc2c2c;
+  border: 3px solid #fc2c2c;
+}

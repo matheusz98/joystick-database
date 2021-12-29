@@ -4,9 +4,14 @@ import { Link } from "react-router-dom";
 export const Nav = styled.nav`
   width: 100%;
   height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
+  top: 0;
   z-index: 1;
-  background: transparent;
+  margin-bottom: -80px;
+  transition: 0.3s ease-in-out;
 `;
 
 export const NavbarContainer = styled.div`
@@ -14,42 +19,40 @@ export const NavbarContainer = styled.div`
   max-width: 1300px;
   height: 80px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: start;
+  /* flex-wrap: wrap; */
   margin: 0 auto;
   padding: 0 50px;
 
   @media (max-width: 768px) {
-    padding: 0 30px;
     flex-direction: column;
+    align-items: center;
   }
 `;
 
 export const NavbarLogo = styled(Link)`
   display: flex;
+  justify-self: flex-start;
   align-items: center;
+  font-size: 1.5rem;
   color: var(--white);
-  margin-left: 2rem;
-
-  h1 {
-    font-size: 1.4rem;
-    margin-top: 30px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-align: center;
-
-    @media (max-width: 480px) {
-      padding-right: 4rem;
-    }
-  }
+  font-weight: 300;
+  text-align: center;
+  cursor: pointer;
 `;
 
 export const NavbarIcon = styled.img`
-  width: 80px;
-  height: 80px;
-  margin-right: 1rem;
+  width: 3rem;
+  margin-right: 0.5rem;
 `;
 
 export const NavbarSearch = styled.div`
-  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+
+  @media (max-width: 640px) {
+    margin-top: 2rem;
+    margin-left: 0;
+  }
 `;

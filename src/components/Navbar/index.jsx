@@ -14,7 +14,7 @@ const Navbar = () => {
       <NavbarContainer>
         <NavbarLogo to="/">
           <NavbarIcon src={LogoIMG} alt="Joystick Database" />
-          <h1>Joystick Database</h1>
+          Joystick Database
         </NavbarLogo>
         <NavbarSearch>
           <SearchBar />

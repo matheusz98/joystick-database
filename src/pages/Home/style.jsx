@@ -9,9 +9,13 @@ export const HomeSection = styled.section`
   width: 100%;
   max-width: 1200px;
   min-height: 100%;
-  padding: 13rem 1rem;
+  padding: 160px 0;
   transition: 0.3s ease-in-out;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    padding: 160px 30px;
+  }
 `;
 
 export const Title = styled.h2`
@@ -36,8 +40,8 @@ export const HomeContent = styled.div`
     grid-row-gap: 1rem;
   }
 
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  @media (max-width: 360px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 `;
 
