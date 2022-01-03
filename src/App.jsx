@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import SimpleReactLightbox from "simple-react-lightbox";
 import Navbar from "./components/Navbar";
 import GlobalStyles from "./GlobalStyles";
@@ -21,7 +26,17 @@ const App = () => {
         <SidebarWindow>
           <Navbar />
           <Switch>
-            <Route path="/" component={Home} exact />
+            <Route path="/" exact render={() => <Redirect to="games-home" />} />
+            <Route
+              path="/games-home"
+              render={() => <Home selectedPage="games-home" />}
+            />
+            <Route
+              path="/search/:pattern"
+              render={(props) => (
+                <Home selectedPage={props.match.params.pattern} />
+              )}
+            />
             <SimpleReactLightbox>
               <Route path="/games/:id" component={Details} />
             </SimpleReactLightbox>

@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { gamesHome } from "../../services/api";
+import { gamesHome, searchGamesURL } from "../../services/api";
 import Loading from "../../components/Loading";
 import { GiGamepadCross } from "react-icons/gi";
+import GameCards from "../../components/GameCards";
+import SearchBar from "../../components/SearchBar";
 import {
   HomeSection,
   Title,
+  SearchContainer,
   HomeContent,
   Pagination,
   NextPage,
@@ -14,10 +17,10 @@ import {
   ScrollToTop,
   ScrollToTopButton,
 } from "./style";
-import GameCards from "../../components/GameCards";
 
-const Home = () => {
+const Home = ({ selectedPage }) => {
   const [games, setGames] = useState([]);
+  const [title, setTitle] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -63,19 +66,43 @@ const Home = () => {
     });
   };
 
+  const capitalizeWord = (str) => {
+    var splitStr = str.toLowerCase().split(" ");
+    for (var i = 0; i < splitStr.length; i++) {
+      splitStr[i] =
+        splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+    }
+    return splitStr.join(" ");
+  };
+
   useEffect(() => {
-    axios.get(`${gamesHome()}&page=${currentPage}`).then((res) => {
+    setLoading(true);
+
+    let page;
+    if (selectedPage === "games-home") {
+      page = `${gamesHome()}&page=${currentPage}`;
+      setTitle("Home");
+    } else {
+      page = `${searchGamesURL(selectedPage)}&page=${currentPage}`;
+      setTitle(capitalizeWord(selectedPage));
+    }
+
+    axios.get(page).then((res) => {
       setGames(res.data.results);
       setLoading(false);
     });
+
     window.addEventListener("scroll", scrollToTop);
-  }, [currentPage]);
+  }, [selectedPage, currentPage]);
 
   return loading ? (
     <Loading />
   ) : (
     <HomeSection>
-      <Title>Home</Title>
+      <Title>{title}</Title>
+      <SearchContainer>
+        <SearchBar />
+      </SearchContainer>
       <HomeContent>
         {games &&
           games.map((game) => (

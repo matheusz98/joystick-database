@@ -45,14 +45,3 @@ export const NavbarIcon = styled.img`
   width: 3rem;
   margin-right: 0.5rem;
 `;
-
-export const NavbarSearch = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-
-  @media (max-width: 640px) {
-    margin-top: 2rem;
-    margin-left: 0;
-  }
-`;

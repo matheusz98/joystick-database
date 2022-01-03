@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { adjustImage } from "../../services/utils";
 import playstation from "../../assets/icons/playstation.svg";
 import xbox from "../../assets/icons/xbox.svg";
@@ -19,6 +20,7 @@ import {
 } from "./style";
 import "./style.css";
 import { Link } from "react-router-dom";
+import Loading from "../Loading";
 
 const GameCards = ({ id, name, cover, platforms, metacritic }) => {
   const criticScore = (score) => {
@@ -68,7 +70,7 @@ const GameCards = ({ id, name, cover, platforms, metacritic }) => {
     <GameCardsContent id={id} to={`/games/${id}`}>
       <GameItemCard
         style={{
-          background: `url(${adjustImage(cover)})`,
+          background: `url(${cover})`,
           backgroundSize: "cover",
           backgroundPosition: "top",
         }}

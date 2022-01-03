@@ -77,13 +77,14 @@ const Details = () => {
   };
 
   useEffect(() => {
+    setLoading(true);
+
     axios.get(gameDetailsUrl(id)).then((res) => {
       setGame(res.data);
       setDevelopers(res.data.developers);
       setGenres(res.data.genres);
       setPlatforms(res.data.platforms);
       setLoading(false);
-      console.log(res.data);
     });
 
     axios.get(gameScreenshots(id)).then((res) => {

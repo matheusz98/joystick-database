@@ -4,25 +4,24 @@ import { SearchForm, SearchInput } from "./style";
 import { BsSearch } from "react-icons/bs";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
+  const [pattern, setPattern] = useState("");
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     e.currentTarget.reset();
-    history.push(`/search/${query}`);
+    history.push(`/search/${pattern}`);
   };
 
   return (
-    <SearchForm onSubmit={handleSubmit}>
+    <SearchForm onSubmit={submitHandler}>
       <SearchInput
-        type="text"
-        placeholder="Search games"
+        type="search"
+        placeholder="Search..."
         onChange={(e) => {
-          setQuery(e.target.value);
+          setPattern(e.target.value);
         }}
       />
-      <BsSearch />
     </SearchForm>
   );
 };

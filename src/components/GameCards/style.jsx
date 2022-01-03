@@ -9,11 +9,9 @@ export const GameCardsContent = styled(Link)`
   position: relative;
   transition: 0.3s ease-in-out;
   color: var(--white);
-
   &:hover {
     transform: scale(1.06);
   }
-
   @media (max-width: 768px) {
     &:hover {
       transform: scale(1.02);
@@ -45,7 +43,6 @@ export const GameItemInfo = styled.div`
   background: #4b419bc0;
   border-radius: 0 0 1rem 1rem;
   transition: 0.3s ease-in-out;
-
   &:hover {
     background: #4b419b;
     transition: 0.3s ease-in-out;
@@ -60,11 +57,9 @@ export const Title = styled.h3`
 export const Platforms = styled.div`
   display: flex;
   flex-wrap: wrap;
-
   li {
     margin: 0.3rem;
   }
-
   img {
     width: 32px;
     height: 32px;
