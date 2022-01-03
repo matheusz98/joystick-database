@@ -4,6 +4,7 @@ import {
   gamesHome,
   popularGamesUrl,
   newGamesUrl,
+  upcomingGamesUrl,
   searchGamesURL,
 } from "../../services/api";
 import Loading from "../../components/Loading";
@@ -93,6 +94,9 @@ const Home = ({ selectedPage }) => {
     } else if (selectedPage === "new-games") {
       page = `${newGamesUrl()}&page=${currentPage}`;
       setTitle("New Games");
+    } else if (selectedPage === "upcoming-games") {
+      page = `${upcomingGamesUrl()}&page=${currentPage}`;
+      setTitle("Upcoming Games");
     } else {
       page = `${searchGamesURL(selectedPage)}&page=${currentPage}`;
       setTitle(capitalizeWord(selectedPage));

@@ -40,6 +40,10 @@ const App = () => {
               render={() => <Home selectedPage="new-games" />}
             />
             <Route
+              path="/upcoming-games"
+              render={() => <Home selectedPage="upcoming-games" />}
+            />
+            <Route
               path="/search/:pattern"
               render={(props) => (
                 <Home selectedPage={props.match.params.pattern} />
