@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { adjustImage } from "../../services/utils";
 import playstation from "../../assets/icons/playstation.svg";
 import xbox from "../../assets/icons/xbox.svg";
 import nintendo from "../../assets/icons/nintendo.svg";
@@ -19,8 +17,6 @@ import {
   NotAvailableScore,
 } from "./style";
 import "./style.css";
-import { Link } from "react-router-dom";
-import Loading from "../Loading";
 
 const GameCards = ({ id, name, cover, platforms, metacritic }) => {
   const criticScore = (score) => {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { gamesHome, searchGamesURL } from "../../services/api";
+import { gamesHome, popularGamesUrl, searchGamesURL } from "../../services/api";
 import Loading from "../../components/Loading";
 import { GiGamepadCross } from "react-icons/gi";
 import GameCards from "../../components/GameCards";
@@ -82,6 +82,9 @@ const Home = ({ selectedPage }) => {
     if (selectedPage === "games-home") {
       page = `${gamesHome()}&page=${currentPage}`;
       setTitle("Home");
+    } else if (selectedPage === "popular-games") {
+      page = `${popularGamesUrl()}&page=${currentPage}`;
+      setTitle("Popular Games");
     } else {
       page = `${searchGamesURL(selectedPage)}&page=${currentPage}`;
       setTitle(capitalizeWord(selectedPage));

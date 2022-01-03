@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { BsSearch } from "react-icons/bs";
-import { GoSearch } from "react-icons/go";
 import Search from "../../assets/icons/search.svg";
 import SearchAlt from "../../assets/icons/search-white.svg";
 

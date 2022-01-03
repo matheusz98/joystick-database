@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SearchForm, SearchInput } from "./style";
-import { BsSearch } from "react-icons/bs";
 
 const SearchBar = () => {
   const [pattern, setPattern] = useState("");

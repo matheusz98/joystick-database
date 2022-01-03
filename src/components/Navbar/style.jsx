@@ -20,7 +20,6 @@ export const NavbarContainer = styled.div`
   height: 80px;
   display: flex;
   justify-content: start;
-  /* flex-wrap: wrap; */
   margin: 0 auto;
   padding: 0 50px;
 
