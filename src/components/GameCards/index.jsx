@@ -75,20 +75,23 @@ const GameCards = ({ id, name, cover, platforms, metacritic }) => {
           <TitleAndPlatforms>
             <Title>{name}</Title>
             <Platforms>
-              {platforms.map((platform) => (
-                <ul key={platform.platform.id}>
-                  <li>
-                    <img
-                      key={platform.platform.id}
-                      src={getPlatforms(platform.platform.name)}
-                      alt={platform.platform.name}
-                    />
-                  </li>
-                </ul>
-              ))}
+              {platforms && platforms.length >= 1 ? (
+                platforms.map((platform) => (
+                  <ul key={platform.platform.id}>
+                    <li>
+                      <img
+                        key={platform.platform.id}
+                        src={getPlatforms(platform.platform.name)}
+                        alt={platform.platform.name}
+                      />
+                    </li>
+                  </ul>
+                ))
+              ) : (
+                <img src={gamepad} alt="gamepad" />
+              )}
             </Platforms>
           </TitleAndPlatforms>
-
           {metacritic !== null ? (
             <Score className={`score ${criticScore(metacritic)}`}>
               {metacritic}

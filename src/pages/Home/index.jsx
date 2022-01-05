@@ -23,6 +23,7 @@ import {
   ScrollToTop,
   ScrollToTopButton,
 } from "./style";
+import gamepad from "../../assets/icons/gamepad.svg";
 
 const Home = ({ selectedPage }) => {
   const [games, setGames] = useState([]);
@@ -105,6 +106,7 @@ const Home = ({ selectedPage }) => {
     axios.get(page).then((res) => {
       setGames(res.data.results);
       setLoading(false);
+      console.log(res.data.results);
     });
 
     window.addEventListener("scroll", scrollToTop);
@@ -119,24 +121,31 @@ const Home = ({ selectedPage }) => {
         <SearchBar />
       </SearchContainer>
       <HomeContent>
-        {games &&
+        {games && games.length > 0 ? (
           games.map((game) => (
             <GameCards
               key={game.id}
               id={game.id}
-              cover={game.background_image}
+              cover={game.background_image || gamepad}
               name={game.name}
               platforms={game.parent_platforms}
               metacritic={game.metacritic}
             />
-          ))}
+          ))
+        ) : (
+          <h1>No results found.</h1>
+        )}
       </HomeContent>
       <Pagination>
-        <NextPage onClick={nextPage} />
-        {currentPage > 1 ? (
+        {games.length > 1 ? (
           <>
-            <PrevPage onClick={previousPage} />
-            <FirstPage onClick={firstPage} />
+            <NextPage onClick={nextPage} />
+            {currentPage > 1 ? (
+              <>
+                <PrevPage onClick={previousPage} />
+                <FirstPage onClick={firstPage} />
+              </>
+            ) : null}
           </>
         ) : null}
       </Pagination>

@@ -44,6 +44,10 @@ export const upcomingGamesUrl = () => `${BASE_URL}${upcoming_games}`;
 const new_games = `games?key=${API_KEY}&dates=${lastYear},${currentDate}&ordering=-released&page_size=20`;
 export const newGamesUrl = () => `${BASE_URL}${new_games}`;
 
+// Search games
+export const searchGamesURL = (game_name) =>
+  `${BASE_URL}games?key=${API_KEY}&search=${game_name}&page_size=21`;
+
 // Game details
 export const gameDetailsUrl = (id) => `${BASE_URL}games/${id}?key=${API_KEY}`;
 
@@ -54,37 +58,9 @@ export const gameScreenshots = (id) =>
 // Game genres
 export const gameGenres = () => `${BASE_URL}genres?key=${API_KEY}`;
 
-// Game platforms
-export const gamePlatforms = () => `${BASE_URL}platforms?key=${API_KEY}`;
+// Details of a specific game genre
+export const genreDetails = (id) => `${BASE_URL}genres/${id}?key=${API_KEY}`;
 
-// Game publishers
-export const gamePublishers = () =>
-  `${BASE_URL}publishers?key=${API_KEY}&page_size=30`;
-
-// Specific game genre
-export const specificGameGenre = (id) =>
-  `${BASE_URL}genres/${id}?key=${API_KEY}`;
-
-// List of game genres
-export const gameGenresList = (id) =>
+// List of games of a specific game genre
+export const genreGameList = (id) =>
   `${BASE_URL}games?key=${API_KEY}&genres=${id}&page_size=21`;
-
-// Specific game platform
-export const specificGamePlatform = (id) =>
-  `${BASE_URL}platforms/${id}?key=${API_KEY}`;
-
-// List of game platforms
-export const gamePlatformsList = (id) =>
-  `${BASE_URL}games?key=${API_KEY}&platforms=${id}&page_size=21`;
-
-// Specific game publisher
-export const specificGamePublisher = (id) =>
-  `${BASE_URL}publishers/${id}?key=${API_KEY}`;
-
-// List of game publishers
-export const gamePublishersList = (id) =>
-  `${BASE_URL}games?key=${API_KEY}&publishers=${id}&page_size=21`;
-
-// Search games
-export const searchGamesURL = (game_name) =>
-  `${BASE_URL}games?key=${API_KEY}&search=${game_name}&page_size=20`;

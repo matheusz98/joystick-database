@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import axios from "axios";
 import { gameDetailsUrl, gameScreenshots } from "../../services/api";
+import parse from "html-react-parser";
 import Loading from "../Loading";
 import { GiGamepadCross } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
@@ -89,7 +90,6 @@ const Details = () => {
 
     axios.get(gameScreenshots(id)).then((res) => {
       setScreenshots(res.data.results);
-      setLoading(false);
     });
 
     window.addEventListener("scroll", scrollToTop);
@@ -173,7 +173,10 @@ const Details = () => {
                 <DetailsInfoItems>
                   <Subtitle>Description: </Subtitle>
                   {game.description_raw === "" ? (
-                    <Description>{game.description}</Description>
+                    <Description>
+                      {typeof game.description === "string" &&
+                        parse(game.description)}
+                    </Description>
                   ) : (
                     <Description>{game.description_raw}</Description>
                   )}
@@ -181,15 +184,24 @@ const Details = () => {
               </DetailsInfoContent>
               <ScreenshotContainer>
                 <Subtitle>Screenshots</Subtitle>
-                <SRLWrapper>
-                  <ScreenshotGallery>
-                    {screenshots.map((screenshot) => (
-                      <ScreenshotItem key={screenshot.id}>
-                        <ScreenshotImg src={screenshot.image} alt={game.name} />
-                      </ScreenshotItem>
-                    ))}
-                  </ScreenshotGallery>
-                </SRLWrapper>
+                {screenshots.length === 0 ? (
+                  <h2 style={{ textAlign: "center", margin: "3rem 0" }}>
+                    Sorry, no screenshots available.
+                  </h2>
+                ) : (
+                  <SRLWrapper>
+                    <ScreenshotGallery>
+                      {screenshots.map((screenshot) => (
+                        <ScreenshotItem key={screenshot.id}>
+                          <ScreenshotImg
+                            src={screenshot.image}
+                            alt={game.name}
+                          />
+                        </ScreenshotItem>
+                      ))}
+                    </ScreenshotGallery>
+                  </SRLWrapper>
+                )}
               </ScreenshotContainer>
               <DetailsInfoItems>
                 <WebsiteLink href={game.website} target="_blank">

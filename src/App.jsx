@@ -13,6 +13,8 @@ import { Container, SidebarWindow } from "./AppStyle";
 import SidebarMenu from "./components/SidebarMenu";
 import Home from "./pages/Home";
 import Details from "./components/Details";
+import Genres from "./pages/Genres";
+import GenreDetails from "./components/GenreDetails";
 
 const App = () => {
   const [sidebar, setSidebar] = useState(true);
@@ -49,6 +51,8 @@ const App = () => {
                 <Home selectedPage={props.match.params.pattern} />
               )}
             />
+            <Route path="/genres" component={Genres} />
+            <Route path="/genre/:id" component={GenreDetails} />
             <SimpleReactLightbox>
               <Route path="/games/:id" component={Details} />
             </SimpleReactLightbox>
