@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { SRLWrapper } from "simple-react-lightbox";
 import axios from "axios";
-import { gameDetailsUrl, gameScreenshots } from "../../services/api";
+import {
+  gameDetailsUrl,
+  gameAchievements,
+  gameScreenshots,
+} from "../../services/api";
 import parse from "html-react-parser";
 import Loading from "../Loading";
 import { GiGamepadCross } from "react-icons/gi";
@@ -41,6 +45,7 @@ const Details = () => {
   const [developers, setDevelopers] = useState([]);
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
+  const [achievements, setAchievements] = useState([]);
   const [screenshots, setScreenshots] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
@@ -85,11 +90,16 @@ const Details = () => {
       setDevelopers(res.data.developers);
       setGenres(res.data.genres);
       setPlatforms(res.data.platforms);
+      console.log(res.data);
       setLoading(false);
     });
 
     axios.get(gameScreenshots(id)).then((res) => {
       setScreenshots(res.data.results);
+    });
+
+    axios.get(gameAchievements(id)).then((res) => {
+      setAchievements(res.data.results);
     });
 
     window.addEventListener("scroll", scrollToTop);
@@ -208,6 +218,13 @@ const Details = () => {
                   {game.name} Website
                 </WebsiteLink>
               </DetailsInfoItems>
+              {achievements.map((achievement) => (
+                <div key={achievement.id}>
+                  <img src={achievement.image} />
+                  <p>{achievement.name}</p>
+                  <p>{achievement.description}</p>
+                </div>
+              ))}
             </DetailsContainer>
             <ScrollToTop visible={visible}>
               <ScrollToTopButton onClick={toTop}>

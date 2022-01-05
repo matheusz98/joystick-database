@@ -178,7 +178,6 @@ const GenreDetails = () => {
                   )}
                 </SliderContent>
               </GenreDetailsGames>
-
               <ScrollToTop visible={visible}>
                 <ScrollToTopButton onClick={toTop}>
                   <GiGamepadCross />

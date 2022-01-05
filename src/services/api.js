@@ -64,3 +64,17 @@ export const genreDetails = (id) => `${BASE_URL}genres/${id}?key=${API_KEY}`;
 // List of games of a specific game genre
 export const genreGameList = (id) =>
   `${BASE_URL}games?key=${API_KEY}&genres=${id}&page_size=21`;
+
+// Platforms
+export const platformsList = () => `${BASE_URL}platforms?key=${API_KEY}`;
+
+// Details of a specific platform
+export const platformDetails = (id) =>
+  `${BASE_URL}platforms/${id}?key=${API_KEY}`;
+
+// List of games of a specific platform
+export const platformsGameList = (id) =>
+  `${BASE_URL}games?key=${API_KEY}&platforms=${id}&page_size=21`;
+
+export const gameAchievements = (id) =>
+  `${BASE_URL}games/${id}/achievements?key=${API_KEY}`;

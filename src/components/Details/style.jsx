@@ -65,7 +65,7 @@ export const DetailsContent = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  padding-top: 5rem;
+  padding-top: 7rem;
   position: relative;
 
   @media (max-width: 768px) {
@@ -108,7 +108,6 @@ export const PlatformsItems = styled.span`
 `;
 
 export const DetailsContainer = styled.div`
-  padding: 220px 0 0;
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
@@ -116,6 +115,7 @@ export const DetailsContainer = styled.div`
   align-items: flex-start;
   flex-direction: column;
   position: relative;
+  padding: 7rem 30px 0;
 
   @media (max-width: 768px) {
     max-width: 100%;

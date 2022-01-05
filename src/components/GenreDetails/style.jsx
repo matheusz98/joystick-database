@@ -39,7 +39,7 @@ export const GenreDetailsContainer = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
-  padding-top: 5rem;
+  padding-top: 7rem;
   position: relative;
 
   @media (max-width: 768px) {
@@ -128,7 +128,7 @@ export const Subtitle = styled.h3`
 export const GenreDetailsGames = styled.div`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 220px 30px;
+  padding: 7rem 30px 0;
   position: relative;
 `;
 
