@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import {
   gamesHome,
   popularGamesUrl,
@@ -7,10 +6,12 @@ import {
   upcomingGamesUrl,
   searchGamesURL,
 } from "../../services/api";
-import Loading from "../../components/Loading";
+import axios from "axios";
 import { GiGamepadCross } from "react-icons/gi";
 import GameCards from "../../components/GameCards";
 import SearchBar from "../../components/SearchBar";
+import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 import {
   HomeSection,
   Title,
@@ -106,7 +107,6 @@ const Home = ({ selectedPage }) => {
     axios.get(page).then((res) => {
       setGames(res.data.results);
       setLoading(false);
-      console.log(res.data.results);
     });
 
     window.addEventListener("scroll", scrollToTop);
@@ -115,46 +115,49 @@ const Home = ({ selectedPage }) => {
   return loading ? (
     <Loading />
   ) : (
-    <HomeSection>
-      <Title>{title}</Title>
-      <SearchContainer>
-        <SearchBar />
-      </SearchContainer>
-      <HomeContent>
-        {games && games.length > 0 ? (
-          games.map((game) => (
-            <GameCards
-              key={game.id}
-              id={game.id}
-              cover={game.background_image || gamepad}
-              name={game.name}
-              platforms={game.parent_platforms}
-              metacritic={game.metacritic}
-            />
-          ))
-        ) : (
-          <h1>No results found.</h1>
-        )}
-      </HomeContent>
-      <Pagination>
-        {games.length > 1 ? (
-          <>
-            <NextPage onClick={nextPage} />
-            {currentPage > 1 ? (
-              <>
-                <PrevPage onClick={previousPage} />
-                <FirstPage onClick={firstPage} />
-              </>
-            ) : null}
-          </>
-        ) : null}
-      </Pagination>
-      <ScrollToTop visible={visible}>
-        <ScrollToTopButton onClick={toTop}>
-          <GiGamepadCross />
-        </ScrollToTopButton>
-      </ScrollToTop>
-    </HomeSection>
+    <>
+      <HomeSection>
+        <Title>{title}</Title>
+        <SearchContainer>
+          <SearchBar />
+        </SearchContainer>
+        <HomeContent>
+          {games && games.length > 0 ? (
+            games.map((game) => (
+              <GameCards
+                key={game.id}
+                id={game.id}
+                cover={game.background_image || gamepad}
+                name={game.name}
+                platforms={game.parent_platforms}
+                metacritic={game.metacritic}
+              />
+            ))
+          ) : (
+            <h1>No results found.</h1>
+          )}
+        </HomeContent>
+        <Pagination>
+          {games.length > 1 ? (
+            <>
+              <NextPage onClick={nextPage} />
+              {currentPage > 1 ? (
+                <>
+                  <PrevPage onClick={previousPage} />
+                  <FirstPage onClick={firstPage} />
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </Pagination>
+        <ScrollToTop visible={visible}>
+          <ScrollToTopButton onClick={toTop}>
+            <GiGamepadCross />
+          </ScrollToTopButton>
+        </ScrollToTop>
+      </HomeSection>
+      <Footer />
+    </>
   );
 };
 

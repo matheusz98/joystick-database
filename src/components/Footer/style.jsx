@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const FooterSection = styled.footer`
-  max-width: 100%;
-  width: 100%;
   background: var(--purple);
   padding-top: 1rem;
 `;

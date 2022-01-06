@@ -11,6 +11,7 @@ import { GiGamepadCross } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import parse from "html-react-parser";
 import Loading from "../Loading";
+import Footer from "../Footer";
 import "./style.css";
 import {
   PlatformDetailSection,
@@ -41,7 +42,6 @@ const PlatformDetails = () => {
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
   const [sliderRef, setSliderRef] = useState(null);
-  let currentPage = 1;
 
   const goBackHandler = () => {
     history.goBack();
@@ -103,19 +103,13 @@ const PlatformDetails = () => {
       setLoading(false);
     });
 
-    axios
-      .get(
-        `${platformsGameList(id)}&page=${Math.floor(
-          Math.random(currentPage) * 11
-        )}`
-      )
-      .then((res) => {
-        setGames(res.data.results);
-        setLoading(false);
-      });
+    axios.get(platformsGameList(id)).then((res) => {
+      setGames(res.data.results);
+      setLoading(false);
+    });
 
     window.addEventListener("scroll", scrollToTop);
-  }, [id, currentPage]);
+  }, [id]);
 
   return loading ? (
     <Loading />
@@ -182,6 +176,7 @@ const PlatformDetails = () => {
               </ScrollToTopButton>
             </ScrollToTop>
           </PlatformDetailSection>
+          <Footer />
         </>
       )}
     </>

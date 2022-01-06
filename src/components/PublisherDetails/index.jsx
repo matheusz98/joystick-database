@@ -10,6 +10,7 @@ import { GiGamepadCross } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import parse from "html-react-parser";
 import Loading from "../Loading";
+import Footer from "../Footer";
 import "./style.css";
 import {
   PublisherDetailsSection,
@@ -174,6 +175,7 @@ const PublisherDetails = () => {
               </ScrollToTopButton>
             </ScrollToTop>
           </PublisherDetailsSection>
+          <Footer />
         </>
       )}
     </>

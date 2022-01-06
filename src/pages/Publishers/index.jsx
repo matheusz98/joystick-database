@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { publishersList } from "../../services/api";
 import axios from "axios";
 import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 import { GiGamepadCross } from "react-icons/gi";
 import {
   PublishersSection,
@@ -24,11 +25,6 @@ const Publishers = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    e.currentTarget.reset();
-  };
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -83,51 +79,54 @@ const Publishers = () => {
   return loading ? (
     <Loading />
   ) : (
-    <PublishersSection>
-      <Title>Publishers</Title>
-      <PublishersContainer>
-        {publishers && publishers.length > 0 ? (
-          publishers.map((publisher) => (
-            <PublishersCards
-              key={publisher.id}
-              to={`/publisher/${publisher.id}`}
-            >
-              <PublishersItemCard
-                style={{
-                  background: `url(${publisher.image_background})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "top",
-                }}
+    <>
+      <PublishersSection>
+        <Title>Publishers</Title>
+        <PublishersContainer>
+          {publishers && publishers.length > 0 ? (
+            publishers.map((publisher) => (
+              <PublishersCards
+                key={publisher.id}
+                to={`/publisher/${publisher.id}`}
               >
-                <PublishersCardInfo>
-                  <PublisherName>{publisher.name}</PublisherName>
-                </PublishersCardInfo>
-              </PublishersItemCard>
-            </PublishersCards>
-          ))
-        ) : (
-          <h1>No results found.</h1>
-        )}
-      </PublishersContainer>
-      <Pagination>
-        {publishers.length > 1 ? (
-          <>
-            <NextPage onClick={nextPage} />
-            {currentPage > 1 ? (
-              <>
-                <PrevPage onClick={previousPage} />
-                <FirstPage onClick={firstPage} />
-              </>
-            ) : null}
-          </>
-        ) : null}
-      </Pagination>
-      <ScrollToTop visible={visible}>
-        <ScrollToTopButton onClick={toTop}>
-          <GiGamepadCross />
-        </ScrollToTopButton>
-      </ScrollToTop>
-    </PublishersSection>
+                <PublishersItemCard
+                  style={{
+                    background: `url(${publisher.image_background})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                  }}
+                >
+                  <PublishersCardInfo>
+                    <PublisherName>{publisher.name}</PublisherName>
+                  </PublishersCardInfo>
+                </PublishersItemCard>
+              </PublishersCards>
+            ))
+          ) : (
+            <h1>No results found.</h1>
+          )}
+        </PublishersContainer>
+        <Pagination>
+          {publishers.length > 1 ? (
+            <>
+              <NextPage onClick={nextPage} />
+              {currentPage > 1 ? (
+                <>
+                  <PrevPage onClick={previousPage} />
+                  <FirstPage onClick={firstPage} />
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </Pagination>
+        <ScrollToTop visible={visible}>
+          <ScrollToTopButton onClick={toTop}>
+            <GiGamepadCross />
+          </ScrollToTopButton>
+        </ScrollToTop>
+      </PublishersSection>
+      <Footer />
+    </>
   );
 };
 

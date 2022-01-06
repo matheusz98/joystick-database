@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { platformsList } from "../../services/api";
-import axios from "axios";
 import { getPlatforms } from "../../services/utils";
-import Loading from "../../components/Loading";
+import axios from "axios";
 import { GiGamepadCross } from "react-icons/gi";
+import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 import {
   PlatformsSection,
   Title,
@@ -79,60 +80,52 @@ const Platforms = () => {
   return loading ? (
     <Loading />
   ) : (
-    <PlatformsSection>
-      <Title>Platforms</Title>
-      <PlatformsContainer>
-        {platforms && platforms.length > 0 ? (
-          platforms.map((platform) => (
-            <PlatformsCards key={platform.id} to={`/platform/${platform.id}`}>
-              <PlatformsItemCard
-                style={{
-                  background: `url(${getPlatforms(platform.name)})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "top",
-                }}
-              >
-                <PlatformsCardInfo>
-                  <PlatformName>{platform.name}</PlatformName>
-                </PlatformsCardInfo>
-              </PlatformsItemCard>
-            </PlatformsCards>
-          ))
-        ) : (
-          <h1>No results found.</h1>
-        )}
-      </PlatformsContainer>
-      <Pagination>
-        {platforms.length > 1 ? (
-          <>
-            <NextPage onClick={nextPage} />
-            {currentPage > 1 ? (
-              <>
-                <PrevPage onClick={previousPage} />
-                <FirstPage onClick={firstPage} />
-              </>
-            ) : null}
-          </>
-        ) : null}
-      </Pagination>
-      <ScrollToTop visible={visible}>
-        <ScrollToTopButton onClick={toTop}>
-          <GiGamepadCross />
-        </ScrollToTopButton>
-      </ScrollToTop>
-    </PlatformsSection>
+    <>
+      <PlatformsSection>
+        <Title>Platforms</Title>
+        <PlatformsContainer>
+          {platforms && platforms.length > 0 ? (
+            platforms.map((platform) => (
+              <PlatformsCards key={platform.id} to={`/platform/${platform.id}`}>
+                <PlatformsItemCard
+                  style={{
+                    background: `url(${getPlatforms(platform.name)})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                  }}
+                >
+                  <PlatformsCardInfo>
+                    <PlatformName>{platform.name}</PlatformName>
+                  </PlatformsCardInfo>
+                </PlatformsItemCard>
+              </PlatformsCards>
+            ))
+          ) : (
+            <h1>No results found.</h1>
+          )}
+        </PlatformsContainer>
+        <Pagination>
+          {platforms.length > 1 ? (
+            <>
+              <NextPage onClick={nextPage} />
+              {currentPage > 1 ? (
+                <>
+                  <PrevPage onClick={previousPage} />
+                  <FirstPage onClick={firstPage} />
+                </>
+              ) : null}
+            </>
+          ) : null}
+        </Pagination>
+        <ScrollToTop visible={visible}>
+          <ScrollToTopButton onClick={toTop}>
+            <GiGamepadCross />
+          </ScrollToTopButton>
+        </ScrollToTop>
+      </PlatformsSection>
+      <Footer />
+    </>
   );
 };
 
 export default Platforms;
-
-{
-  /* <div>
-      {platforms.map((platform) => (
-        <div key={platform.id}>
-          <p>{platform.name}</p>
-          <img src={platform.image_background} style={{ width: "360px" }} />
-        </div>
-      ))}
-    </div> */
-}

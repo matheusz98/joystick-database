@@ -9,8 +9,8 @@ import {
 import { GiGamepadCross } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
 import parse from "html-react-parser";
-import "./style.css";
 import Loading from "../Loading";
+import Footer from "../Footer";
 import {
   GenreDetailsSection,
   GenreDetailsContainer,
@@ -31,6 +31,7 @@ import {
   ScrollToTop,
   ScrollToTopButton,
 } from "./style";
+import "./style.css";
 
 const GenreDetails = () => {
   const { id } = useParams();
@@ -40,7 +41,6 @@ const GenreDetails = () => {
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
   const [sliderRef, setSliderRef] = useState(null);
-  let currentPage = 1;
 
   const goBackHandler = () => {
     history.goBack();
@@ -102,17 +102,13 @@ const GenreDetails = () => {
       setLoading(false);
     });
 
-    axios
-      .get(
-        `${genreGameList(id)}&page=${Math.floor(Math.random(currentPage) * 11)}`
-      )
-      .then((res) => {
-        setGames(res.data.results);
-        setLoading(false);
-      });
+    axios.get(genreGameList(id)).then((res) => {
+      setGames(res.data.results);
+      setLoading(false);
+    });
 
     window.addEventListener("scroll", scrollToTop);
-  }, [id, currentPage]);
+  }, [id]);
 
   return loading ? (
     <Loading />
@@ -184,6 +180,7 @@ const GenreDetails = () => {
                 </ScrollToTopButton>
               </ScrollToTop>
             </GenreDetailsSection>
+            <Footer />
           </>
         </>
       )}

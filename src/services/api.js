@@ -63,7 +63,7 @@ export const genreDetails = (id) => `${BASE_URL}genres/${id}?key=${API_KEY}`;
 
 // List of games of a specific game genre
 export const genreGameList = (id) =>
-  `${BASE_URL}games?key=${API_KEY}&genres=${id}&page_size=21`;
+  `${BASE_URL}games?key=${API_KEY}&genres=${id}`;
 
 // Platforms
 export const platformsList = () =>
@@ -75,7 +75,7 @@ export const platformDetails = (id) =>
 
 // List of games of a specific platform
 export const platformsGameList = (id) =>
-  `${BASE_URL}games?key=${API_KEY}&platforms=${id}&page_size=21`;
+  `${BASE_URL}games?key=${API_KEY}&platforms=${id}`;
 
 // Publishers
 export const publishersList = () =>
@@ -87,4 +87,4 @@ export const publisherDetails = (id) =>
 
 // List of games of a specific publisher
 export const publisherGameList = (id) =>
-  `${BASE_URL}games?key=${API_KEY}&publishers=${id}&page_size=21`;
+  `${BASE_URL}games?key=${API_KEY}&publishers=${id}`;

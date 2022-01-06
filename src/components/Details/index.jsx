@@ -1,16 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { SRLWrapper } from "simple-react-lightbox";
+import { gameDetailsUrl, gameScreenshots } from "../../services/api";
 import axios from "axios";
-import {
-  gameDetailsUrl,
-  gameAchievements,
-  gameScreenshots,
-} from "../../services/api";
-import parse from "html-react-parser";
 import Loading from "../Loading";
+import Footer from "../Footer";
+import parse from "html-react-parser";
 import { GiGamepadCross } from "react-icons/gi";
 import { BiArrowBack } from "react-icons/bi";
+import { SRLWrapper } from "simple-react-lightbox";
 import {
   DetailsSection,
   DetailsContent,
@@ -89,7 +86,6 @@ const Details = () => {
       setDevelopers(res.data.developers);
       setGenres(res.data.genres);
       setPlatforms(res.data.platforms);
-      console.log(res.data);
       setLoading(false);
     });
 
@@ -220,6 +216,7 @@ const Details = () => {
               </ScrollToTopButton>
             </ScrollToTop>
           </DetailsSection>
+          <Footer />
         </>
       )}
     </>

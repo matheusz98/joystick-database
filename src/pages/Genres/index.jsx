@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { gameGenres } from "../../services/api";
-import Loading from "../../components/Loading";
+import axios from "axios";
 import { GiGamepadCross } from "react-icons/gi";
+import Loading from "../../components/Loading";
+import Footer from "../../components/Footer";
 import {
   GenresSection,
   Title,
@@ -48,35 +49,38 @@ const Genres = () => {
   return loading ? (
     <Loading />
   ) : (
-    <GenresSection>
-      <Title>Genres</Title>
-      <GenresContainer>
-        {genres && genres.length > 0 ? (
-          genres.map((genre) => (
-            <GenresCards key={genre.id} to={`/genre/${genre.id}`}>
-              <GenresItemCard
-                style={{
-                  background: `url(${genre.image_background})`,
-                  backgroundSize: "cover",
-                  backgroundPosition: "top",
-                }}
-              >
-                <GenreCardInfo>
-                  <GenreName>{genre.name}</GenreName>
-                </GenreCardInfo>
-              </GenresItemCard>
-            </GenresCards>
-          ))
-        ) : (
-          <h1>No results found</h1>
-        )}
-      </GenresContainer>
-      <ScrollToTop visible={visible}>
-        <ScrollToTopButton onClick={toTop}>
-          <GiGamepadCross />
-        </ScrollToTopButton>
-      </ScrollToTop>
-    </GenresSection>
+    <>
+      <GenresSection>
+        <Title>Genres</Title>
+        <GenresContainer>
+          {genres && genres.length > 0 ? (
+            genres.map((genre) => (
+              <GenresCards key={genre.id} to={`/genre/${genre.id}`}>
+                <GenresItemCard
+                  style={{
+                    background: `url(${genre.image_background})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "top",
+                  }}
+                >
+                  <GenreCardInfo>
+                    <GenreName>{genre.name}</GenreName>
+                  </GenreCardInfo>
+                </GenresItemCard>
+              </GenresCards>
+            ))
+          ) : (
+            <h1>No results found</h1>
+          )}
+        </GenresContainer>
+        <ScrollToTop visible={visible}>
+          <ScrollToTopButton onClick={toTop}>
+            <GiGamepadCross />
+          </ScrollToTopButton>
+        </ScrollToTop>
+      </GenresSection>
+      <Footer />
+    </>
   );
 };
 
