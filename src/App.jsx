@@ -17,6 +17,8 @@ import Genres from "./pages/Genres";
 import GenreDetails from "./components/GenreDetails";
 import Platforms from "./pages/Platforms";
 import PlatformDetails from "./components/PlatformDetails";
+import Publishers from "./pages/Publishers";
+import PublisherDetails from "./components/PublisherDetails";
 
 const App = () => {
   const [sidebar, setSidebar] = useState(true);
@@ -57,6 +59,8 @@ const App = () => {
             <Route path="/genre/:id" component={GenreDetails} />
             <Route path="/platforms" component={Platforms} />
             <Route path="/platform/:id" component={PlatformDetails} />
+            <Route path="/publishers" component={Publishers} />
+            <Route path="/publisher/:id" component={PublisherDetails} />
             <SimpleReactLightbox>
               <Route path="/games/:id" component={Details} />
             </SimpleReactLightbox>

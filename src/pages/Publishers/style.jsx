@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { BiArrowToLeft } from "react-icons/bi";
 
-export const PlatformsSection = styled.section`
+export const PublishersSection = styled.section`
   width: 100%;
   max-width: 1200px;
   min-height: 100%;
@@ -30,7 +30,7 @@ export const Title = styled.h2`
   }
 `;
 
-export const PlatformsContainer = styled.div`
+export const PublishersContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   grid-column-gap: 2rem;
@@ -43,7 +43,7 @@ export const PlatformsContainer = styled.div`
   }
 `;
 
-export const PlatformsCards = styled(Link)`
+export const PublishersCards = styled(Link)`
   border-radius: 1rem;
   min-height: 60vh;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
@@ -61,13 +61,13 @@ export const PlatformsCards = styled(Link)`
   }
 `;
 
-export const PlatformsItemCard = styled.div`
+export const PublishersItemCard = styled.div`
   height: 100%;
   border-radius: 1rem;
   position: relative;
 `;
 
-export const PlatformsCardInfo = styled.div`
+export const PublishersCardInfo = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -84,7 +84,7 @@ export const PlatformsCardInfo = styled.div`
   }
 `;
 
-export const PlatformName = styled.h3`
+export const PublisherName = styled.h3`
   font-size: 1.2rem;
   font-weight: 300;
 `;

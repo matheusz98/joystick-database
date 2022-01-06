@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
-import { platformsList } from "../../services/api";
+import { publishersList } from "../../services/api";
 import axios from "axios";
-import { getPlatforms } from "../../services/utils";
 import Loading from "../../components/Loading";
 import { GiGamepadCross } from "react-icons/gi";
 import {
-  PlatformsSection,
+  PublishersSection,
   Title,
-  PlatformsContainer,
-  PlatformsCards,
-  PlatformsItemCard,
-  PlatformsCardInfo,
-  PlatformName,
+  PublishersContainer,
+  PublishersCards,
+  PublishersItemCard,
+  PublishersCardInfo,
+  PublisherName,
   Pagination,
   NextPage,
   PrevPage,
@@ -20,11 +19,16 @@ import {
   ScrollToTopButton,
 } from "./style";
 
-const Platforms = () => {
-  const [platforms, setPlatforms] = useState([]);
+const Publishers = () => {
+  const [publishers, setPublishers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    e.currentTarget.reset();
+  };
 
   const nextPage = () => {
     setCurrentPage(currentPage + 1);
@@ -68,8 +72,8 @@ const Platforms = () => {
   };
 
   useEffect(() => {
-    axios.get(`${platformsList()}&page=${currentPage}`).then((res) => {
-      setPlatforms(res.data.results);
+    axios.get(`${publishersList()}&page=${currentPage}`).then((res) => {
+      setPublishers(res.data.results);
       setLoading(false);
     });
 
@@ -79,31 +83,34 @@ const Platforms = () => {
   return loading ? (
     <Loading />
   ) : (
-    <PlatformsSection>
-      <Title>Platforms</Title>
-      <PlatformsContainer>
-        {platforms && platforms.length > 0 ? (
-          platforms.map((platform) => (
-            <PlatformsCards key={platform.id} to={`/platform/${platform.id}`}>
-              <PlatformsItemCard
+    <PublishersSection>
+      <Title>Publishers</Title>
+      <PublishersContainer>
+        {publishers && publishers.length > 0 ? (
+          publishers.map((publisher) => (
+            <PublishersCards
+              key={publisher.id}
+              to={`/publisher/${publisher.id}`}
+            >
+              <PublishersItemCard
                 style={{
-                  background: `url(${getPlatforms(platform.name)})`,
+                  background: `url(${publisher.image_background})`,
                   backgroundSize: "cover",
                   backgroundPosition: "top",
                 }}
               >
-                <PlatformsCardInfo>
-                  <PlatformName>{platform.name}</PlatformName>
-                </PlatformsCardInfo>
-              </PlatformsItemCard>
-            </PlatformsCards>
+                <PublishersCardInfo>
+                  <PublisherName>{publisher.name}</PublisherName>
+                </PublishersCardInfo>
+              </PublishersItemCard>
+            </PublishersCards>
           ))
         ) : (
           <h1>No results found.</h1>
         )}
-      </PlatformsContainer>
+      </PublishersContainer>
       <Pagination>
-        {platforms.length > 1 ? (
+        {publishers.length > 1 ? (
           <>
             <NextPage onClick={nextPage} />
             {currentPage > 1 ? (
@@ -120,19 +127,8 @@ const Platforms = () => {
           <GiGamepadCross />
         </ScrollToTopButton>
       </ScrollToTop>
-    </PlatformsSection>
+    </PublishersSection>
   );
 };
 
-export default Platforms;
-
-{
-  /* <div>
-      {platforms.map((platform) => (
-        <div key={platform.id}>
-          <p>{platform.name}</p>
-          <img src={platform.image_background} style={{ width: "360px" }} />
-        </div>
-      ))}
-    </div> */
-}
+export default Publishers;
