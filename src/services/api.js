@@ -77,9 +77,6 @@ export const platformDetails = (id) =>
 export const platformsGameList = (id) =>
   `${BASE_URL}games?key=${API_KEY}&platforms=${id}&page_size=21`;
 
-export const gameAchievements = (id) =>
-  `${BASE_URL}games/${id}/achievements?key=${API_KEY}`;
-
 // Publishers
 export const publishersList = () =>
   `${BASE_URL}publishers?key=${API_KEY}&page_size=21`;

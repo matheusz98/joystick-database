@@ -45,7 +45,6 @@ const Details = () => {
   const [developers, setDevelopers] = useState([]);
   const [genres, setGenres] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-  const [achievements, setAchievements] = useState([]);
   const [screenshots, setScreenshots] = useState([]);
   const [loading, setLoading] = useState(true);
   const [visible, setVisible] = useState(false);
@@ -96,10 +95,6 @@ const Details = () => {
 
     axios.get(gameScreenshots(id)).then((res) => {
       setScreenshots(res.data.results);
-    });
-
-    axios.get(gameAchievements(id)).then((res) => {
-      setAchievements(res.data.results);
     });
 
     window.addEventListener("scroll", scrollToTop);
@@ -218,13 +213,6 @@ const Details = () => {
                   {game.name} Website
                 </WebsiteLink>
               </DetailsInfoItems>
-              {achievements.map((achievement) => (
-                <div key={achievement.id}>
-                  <img src={achievement.image} />
-                  <p>{achievement.name}</p>
-                  <p>{achievement.description}</p>
-                </div>
-              ))}
             </DetailsContainer>
             <ScrollToTop visible={visible}>
               <ScrollToTopButton onClick={toTop}>
